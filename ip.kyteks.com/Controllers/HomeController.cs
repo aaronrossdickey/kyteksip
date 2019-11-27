@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -20,6 +21,8 @@ namespace ip.kyteks.com.Controllers
 
         public IActionResult Index()
         {
+            IPAddress remoteIpAddress = Request.HttpContext.Connection.RemoteIpAddress;
+            ViewData["remoteIp"] = remoteIpAddress.ToString();
             return View();
         }
 
